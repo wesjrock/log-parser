@@ -1,7 +1,10 @@
+require 'json'
+
 class Parse
    def initialize(path)
       @path = path
       @lines = []
+      @line_count = 0
    end
 
    def fopen
@@ -19,6 +22,20 @@ class Parse
 
    def get_line
       return @lines[0]
+   end
+
+   def count_lines
+      @line_count = @lines.size
+      convert_to_json()
+   end
+
+   def convert_to_json
+      my_object = {
+         "#{@path}": {
+         lines: @line_count
+         } 
+      }
+      json_object = my_object.to_json
    end
 
 end
