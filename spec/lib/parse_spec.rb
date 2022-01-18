@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 require_relative '../../lib/parse'
 
-describe '.fopen' do
+describe '#fopen' do
     context "when the file exists:" do
         it 'open the file' do
             #Input

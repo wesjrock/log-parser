@@ -1,13 +1,13 @@
 class Parse
    def initialize(path)
       @path = path
-      @line = []
+      @lines = []
    end
 
    def fopen
       if File.exists?(@path)
          file = File.open(@path)
-         @line = file.readlines.map(&:chomp)
+         @lines = file.readlines.map(&:chomp)
          file.close
       else
          return "ERROR: Invalid Path"
@@ -15,7 +15,7 @@ class Parse
    end
 
    def get_line
-      return @line[0]
+      return @lines[0]
    end
 
 end
