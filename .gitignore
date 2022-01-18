@@ -1,5 +1,4 @@
-# Log file
-/log
+log/
 
 *.gem
 *.rbc
