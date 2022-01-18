@@ -7,10 +7,13 @@ class Parse
    def fopen
       if File.exists?(@path)
          file = File.open(@path)
-         @lines = file.readlines.map(&:chomp)
-         file.close
-      else
-         return "ERROR: Invalid Path"
+         begin
+            @lines = file.readlines.map(&:chomp)
+         rescue
+            return nil
+         ensure
+            file.close
+         end
       end
    end
 

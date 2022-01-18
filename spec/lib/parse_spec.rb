@@ -20,7 +20,7 @@ describe '#fopen' do
             parse.fopen
 
             #Output
-            expect(parse.fopen()).to eq("ERROR: Invalid Path")
+            expect(parse.fopen()).to eq(nil)
         end
     end
 end
