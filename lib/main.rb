@@ -13,11 +13,11 @@ class Main
             @file.close
          end
       else
-         return "ERROR"
+         return "ERROR: Invalid Path"
       end
    end
 
-   def getLine
+   def get_line
       return @line[0]
    end
 

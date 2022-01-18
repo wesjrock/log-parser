@@ -9,7 +9,7 @@ describe Main do
             main.fopen
 
             #Output
-            expect(main.getLine()).to eq("  0:00 ------------------------------------------------------------")
+            expect(main.get_line()).to eq("  0:00 ------------------------------------------------------------")
         end
     end
 
@@ -20,7 +20,7 @@ describe Main do
             main.fopen
 
             #Output
-            expect(main.fopen()).to eq("ERROR")
+            expect(main.fopen()).to eq("ERROR: Invalid Path")
         end
     end
 
