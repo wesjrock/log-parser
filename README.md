@@ -1,11 +1,15 @@
 # Required
 1. Install Ruby (3.1.0): https://rvm.io
-2. Install Rspec: Run the command 'bundle'
+2. Install Rspec and Json support: Run the command 'bundle'
 
 # Running the Aplication
 Run
 ```
-ruby main.rb
+irb
+require_relative 'parse'
+my_instance = Parse.new("file path")
+my_instance.fopen
+my_instance.convert_to_json
 ```
 
 # Running the Test
@@ -15,5 +19,5 @@ log-parser/spec/lib
 ```
 Run
 ```
-rspec main_spec.rb
+rspec parse_spec.rb
 ```
