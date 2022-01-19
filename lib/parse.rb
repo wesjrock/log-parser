@@ -36,8 +36,6 @@ class Parse
 
    def count_lines
       @lines.size
-   end
-
-   
+   end   
 
 end
