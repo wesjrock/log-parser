@@ -3,17 +3,17 @@
 2. Install Rspec and Json support: Run the command 'bundle'
 
 # Running the Aplication
+Go to directory
+```
+log-parser/lib
+```
 Run
 ```
-irb
-require_relative 'parse'
-my_instance = Parse.new("file path")
-my_instance.fopen
-my_instance.convert_to_json
+ruby main.rb
 ```
 
 # Running the Test
-Go into the folder
+Go to directory
 ```
 log-parser/spec/lib
 ```

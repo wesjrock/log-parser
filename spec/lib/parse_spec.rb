@@ -1,37 +1,43 @@
 require_relative '../spec_helper'
 require_relative '../../lib/parse'
 
+path = '../../log/games.log'
+invalid_path = 'invalid.rb'
+
 describe Parse do
   describe '#fopen' do
-    context "when the file exists:" do
-      it 'open the file' do
-        parse = Parse.new("../../log/games.log")
+    context 'when file exists:' do
+      it 'open it' do
+        parse = Parse.new(path)
         parse.fopen
 
-        expect(parse.get_first_line()).to eq("  0:00 ------------------------------------------------------------")
+        expect(parse.first_line).to eq('  0:00 ------------------------------------------------------------')
       end
     end
 
-    context "when the file doesn't exist:" do
-      it "return an error message" do
-        parse = Parse.new("invalid-path")
+    context 'when file does not exist:' do
+      it 'return an error message' do
+        parse = Parse.new(invalid_path)
         parse.fopen
 
-        expect(parse.fopen()).to eq(nil)
+        expect(parse.fopen).to eq(nil)
       end
     end
-    
-  end
+end
 
   describe '#convert_to_json' do
-    context "when counting line numbers:" do
-      it "returns a JSON object" do
-        parse = Parse.new("../../log/games.log")
+    context 'when counting number of lines:' do
+      it 'returns JSON object' do
+        parse = Parse.new(path)
         parse.fopen
-        my_json_object = parse.output
-        expected_json_object = {"../../log/games.log":{"lines":5306}}.to_json
+        json_object = parse.output
+        expected_json_object = {
+          "#{path}": {
+            "lines":5306,
+            "players": [["<world>","Isgalamido","Dono da Bola","Zeh","Assasinu Credi","Oootsimo","Maluquinho","Mal","Chessus"],
+          ["Isgalamido","Mocinha","Zeh","Dono da Bola","Assasinu Credi","Oootsimo","UnnamedPlayer","Maluquinho","Mal","Chessus"]]}}.to_json
 
-        expect(my_json_object).to eq(expected_json_object)
+        expect(json_object).to eq(expected_json_object)
       end
     end
   end
