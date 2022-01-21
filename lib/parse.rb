@@ -7,8 +7,10 @@ class Parse
     @game_info = {}
 
     begin
-      file = File.open(@path)
-      @lines = file.readlines.map(&:chomp)
+      if(File.exist?(@path))
+        @lines = File.readlines(@path, chomp: true)
+        @file = File.basename(@path)
+      end
     rescue Errno::ENOENT
       puts 'Invalid Path'
     end
@@ -20,7 +22,7 @@ class Parse
 
   def output
     @game_info = {
-      @path => {
+      @file => {
         lines: count_lines(),
         players: obtain_player_names(),
       }
