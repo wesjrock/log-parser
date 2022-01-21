@@ -5,31 +5,28 @@ path = '../../log/games.log'
 invalid_path = 'invalid.rb'
 
 describe Parse do
-  describe '#fopen' do
+  describe '#obtain_first line' do
     context 'when file exists:' do
-      it 'open it' do
+      it 'return first line of the file' do
         parse = Parse.new(path)
-        parse.fopen
 
-        expect(parse.first_line).to eq('  0:00 ------------------------------------------------------------')
+        expect(parse.obtain_first_line).to eq('  0:00 ------------------------------------------------------------')
       end
     end
 
     context 'when file does not exist:' do
-      it 'return an error message' do
+      it 'return an error' do
         parse = Parse.new(invalid_path)
-        parse.fopen
 
-        expect(parse.fopen).to eq(nil)
+        expect(parse.obtain_first_line).to eq(nil)
       end
     end
-end
+  end
 
-  describe '#convert_to_json' do
-    context 'when counting number of lines:' do
+  describe '#output' do
+    context 'when file "games.log" exists:' do
       it 'returns JSON object' do
         parse = Parse.new(path)
-        parse.fopen
         json_object = parse.output
         expected_json_object = {
           "#{path}": {
