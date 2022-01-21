@@ -28,46 +28,41 @@ class Parse
     @game_info = {
       @path => {
         lines: count_lines(),
-        players: [],
+        players: obtain_player_names(),
       }
     }
-    obtain_player_name() 
     @game_info.to_json
   end
-
-  private
 
   def fread(file)
     @lines = file.readlines.map(&:chomp)
   end
 
+  private
+
   def count_lines
     @lines.size
   end
 
-  def obtain_player_name
-    player_one_names = []
-    player_two_names = []
-    game_info_aux = @game_info[@path][:players] # OK
+  def obtain_player_names
+    game_info_aux = []
 
     for i in 0..@lines.size - 1
       if @lines.at(i).include?('killed')
-        splitted_array = @lines.at(i).split('killed')
+        splitted = @lines.at(i).split('killed')
 
-        player_one = splitted_array[0].split(':')
-        player_one.slice!(0, 3)
-        player_one[0].strip!
-        player_one_names.push(player_one[0])
+        players_one = splitted[0].split(':')
+        players_one.slice!(0, 3)
+        players_one[0].strip!
 
-        player_two = splitted_array[1].split('by')
-        player_two.delete_at(1)
-        player_two[0].strip!
-        player_two_names.push(player_two[0])
+        players_two = splitted[1].split('by')
+        players_two.delete_at(1)
+        players_two[0].strip!
+        
+        game_info_aux.push(players_one[0], players_two[0])
       end
     end
-
-    game_info_aux << player_one_names.uniq << player_two_names.uniq
-    @game_info[@path][:players] = game_info_aux
+    game_info_aux.uniq
   end
 
 end

@@ -34,8 +34,9 @@ end
         expected_json_object = {
           "#{path}": {
             "lines":5306,
-            "players": [["<world>","Isgalamido","Dono da Bola","Zeh","Assasinu Credi","Oootsimo","Maluquinho","Mal","Chessus"],
-          ["Isgalamido","Mocinha","Zeh","Dono da Bola","Assasinu Credi","Oootsimo","UnnamedPlayer","Maluquinho","Mal","Chessus"]]}}.to_json
+            "players": ["<world>","Isgalamido","Mocinha","Zeh","Dono da Bola","Assasinu Credi","Oootsimo","UnnamedPlayer","Maluquinho","Mal","Chessus"]
+          }
+        }.to_json
 
         expect(json_object).to eq(expected_json_object)
       end
