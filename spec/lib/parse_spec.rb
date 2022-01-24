@@ -1,37 +1,44 @@
+# frozen_string_literal: true
+
 require_relative '../spec_helper'
 require_relative '../../lib/parse'
 
 describe Parse do
-  describe '#fopen' do
-    context "when the file exists:" do
-      it 'open the file' do
-        parse = Parse.new("../../log/games.log")
-        parse.fopen
+  let(:path) { '../../data/games.log' }
+  let(:invalid_path) { 'invalid.rb' }
 
-        expect(parse.get_first_line()).to eq("  0:00 ------------------------------------------------------------")
+  describe '#obtain_first_line' do
+    context 'when file exists:' do
+      it 'return first line of the file' do
+        parse = Parse.new(path)
+
+        expect(parse.obtain_first_line).to eq('  0:00 ------------------------------------------------------------')
       end
     end
 
-    context "when the file doesn't exist:" do
-      it "return an error message" do
-        parse = Parse.new("invalid-path")
-        parse.fopen
+    context 'when file does not exist:' do
+      it 'return an error' do
+        parse = Parse.new(invalid_path)
 
-        expect(parse.fopen()).to eq(nil)
+        expect(parse.obtain_first_line).to eq(nil)
       end
     end
-    
   end
 
-  describe '#convert_to_json' do
-    context "when counting line numbers:" do
-      it "returns a JSON object" do
-        parse = Parse.new("../../log/games.log")
-        parse.fopen
-        my_json_object = parse.output
-        expected_json_object = {"../../log/games.log":{"lines":5306}}.to_json
+  describe '#output' do
+    context 'when file "games.log" exists:' do
+      it 'returns JSON object' do
+        parse = Parse.new(path)
+        file_name = File.basename(path)
+        json_object = parse.output
+        expected_json_object = {
+          "#{file_name}": {
+            "lines": 5306,
+            "players": ["Isgalamido","Mocinha","Dono da Bola","Zeh","Assasinu Credi","Oootsimo","UnnamedPlayer","Maluquinho","Mal","Chessus"]
+          }
+        }.to_json
 
-        expect(my_json_object).to eq(expected_json_object)
+        expect(json_object).to eq(expected_json_object)
       end
     end
   end
