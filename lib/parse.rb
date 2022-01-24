@@ -4,10 +4,9 @@ class Parse
   def initialize(path)
     @path = path
     @lines = []
-    @game_info = {}
 
     begin
-      if(File.exist?(@path))
+      if File.exist?(@path)
         @lines = File.readlines(@path, chomp: true)
         @file = File.basename(@path)
       end
@@ -21,19 +20,19 @@ class Parse
   end
 
   def output
-    @game_info = {
+    game_info = {
       @file => {
-        lines: count_lines(),
-        players: obtain_player_names(),
+        lines: count_lines,
+        players: obtain_player_names,
       }
     }
-    @game_info.to_json()
+    game_info.to_json
   end
 
   private
 
   def count_lines
-    @lines.size()
+    @lines.size
   end
 
   def obtain_player_names
@@ -45,16 +44,16 @@ class Parse
 
         players_one = splitted[0].split(':')
         players_one.slice!(0, 3)
-        players_one[0].strip!()
+        players_one[0].strip!
 
         players_two = splitted[1].split('by')
         players_two.delete_at(1)
-        players_two[0].strip!()
+        players_two[0].strip!
 
         game_info_aux.push(players_one[0], players_two[0])
       end
     end
-    game_info_aux.uniq()
+    game_info_aux.uniq
   end
 
 end

@@ -1,6 +1,12 @@
 # Required
-1. Install Ruby (version 3.1.0): https://rvm.io
-2. Install Rspec and Json support: Run the command 'bundle'
+1. Install Ruby (version 3.1.0)
+```
+https://rvm.io
+```
+2. Install dependencies: json, rspec, rubocop, simplecov
+```
+Run the command 'bundle'
+```
 
 # Running the Aplication
 Go to root directory

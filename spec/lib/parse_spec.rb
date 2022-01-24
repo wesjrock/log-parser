@@ -1,10 +1,10 @@
 require_relative '../spec_helper'
 require_relative '../../lib/parse'
 
-path = '../../data/games.log'
-invalid_path = 'invalid.rb'
-
 describe Parse do
+  let(:path) { '../../data/games.log' }
+  let(:invalid_path) { 'invalid.rb' }
+
   describe '#obtain_first_line' do
     context 'when file exists:' do
       it 'return first line of the file' do
@@ -31,7 +31,7 @@ describe Parse do
         json_object = parse.output
         expected_json_object = {
           "#{file_name}": {
-            "lines":5306,
+            "lines": 5306,
             "players": ["<world>","Isgalamido","Mocinha","Zeh","Dono da Bola","Assasinu Credi","Oootsimo","UnnamedPlayer","Maluquinho","Mal","Chessus"]
           }
         }.to_json

@@ -1,6 +1,8 @@
 /data/
 *.log
 
+/spec/lib/coverage/
+
 *.gem
 *.rbc
 /.config
