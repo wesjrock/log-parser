@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 require_relative '../../lib/parse'
 
-path = '../fixtures/games.log'
+path = '../../data/games.log'
 invalid_path = 'invalid.rb'
 
 describe Parse do

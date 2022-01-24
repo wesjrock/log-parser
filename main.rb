@@ -1,6 +1,6 @@
 require_relative 'lib/parse'
 
-path = 'spec/fixtures/games.log'
+path = './data/games.log'
 
 instance = Parse.new(path)
 result = instance.output
