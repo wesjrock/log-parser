@@ -32,7 +32,7 @@ describe Parse do
         expected_json_object = {
           "#{file_name}": {
             "lines": 5306,
-            "players": ["<world>","Isgalamido","Mocinha","Zeh","Dono da Bola","Assasinu Credi","Oootsimo","UnnamedPlayer","Maluquinho","Mal","Chessus"]
+            "players": ["Isgalamido","Mocinha","Dono da Bola","Zeh","Assasinu Credi","Oootsimo","UnnamedPlayer","Maluquinho","Mal","Chessus"]
           }
         }.to_json
 

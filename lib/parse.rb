@@ -50,7 +50,9 @@ class Parse
         players_two.delete_at(1)
         players_two[0].strip!
 
-        game_info_aux.push(players_one[0], players_two[0])
+        if(players_one[0] || players_two[0]) != '<world>'
+          game_info_aux.push(players_one[0], players_two[0])
+        end
       end
     end
     game_info_aux.uniq
