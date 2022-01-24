@@ -1,7 +1,6 @@
-/data/
 *.log
-
-/spec/lib/coverage/
+/data/
+/spec/lib/coverage
 
 *.gem
 *.rbc
