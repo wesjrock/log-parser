@@ -62,7 +62,6 @@ class Parse
     game_info_aux.uniq
   end
 
-  # TAREFA 4 e 5: nao inclui o caso do player se suicidar
   def count_kills
     players_and_kills = {}
 
