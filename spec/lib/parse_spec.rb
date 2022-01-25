@@ -34,7 +34,9 @@ describe Parse do
         expected_json_object = {
           "#{file_name}": {
             "lines": 5306,
-            "players": ["Isgalamido","Mocinha","Dono da Bola","Zeh","Assasinu Credi","Oootsimo","UnnamedPlayer","Maluquinho","Mal","Chessus"]
+            "players": ["Isgalamido","Mocinha","Dono da Bola","Zeh","Assasinu Credi","Oootsimo","UnnamedPlayer","Maluquinho","Mal","Chessus"],
+            "kills":{"Isgalamido":178,"Dono da Bola":88,"Zeh":154,"Assasinu Credi":123,"Oootsimo":132,"Maluquinho":1,"Mal":51,"Chessus":41},
+            "total_kills":768
           }
         }.to_json
 
