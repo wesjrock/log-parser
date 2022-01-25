@@ -62,8 +62,9 @@ class Parse
     game_info_aux.uniq
   end
 
+  # TAREFA 4 e 5: nao inclui o caso do player se suicidar
   def count_kills
-    kills = []
+    players_and_kills = {}
 
     for i in 0..@lines.size - 1
       if @lines.at(i).include?('killed')
@@ -73,25 +74,30 @@ class Parse
         players_one.slice!(0, 3)
         players_one[0].strip!
 
-        players_two = splitted[1].split('by')
-        players_two.delete_at(1)
-        players_two[0].strip!
-
-        # Don't count <world> and also don't count when player kills himself
-        if (players_one[0] != '<world>') && (players_one[0] != players_two[0])
-          kills.push(players_one[0])
-        end
+        players_and_kills.store(players_one[0], 0)
       end
     end
-    kills.tally
+
+    for j in 0..@lines.size - 1
+      players_and_kills.each {|key, value|
+        if @lines.at(j).include?("#{key} killed")
+          players_and_kills.store(key, value + 1)
+        elsif @lines.at(j).include?("<world> killed #{key}")
+          players_and_kills.store(key, value - 1)
+        end
+      }
+    end
+    players_and_kills.delete('<world>')
+    players_and_kills
   end
 
   def count_total_kills
     total_kills = 0
-    kills = count_kills
-    
-    kills.each do |_key, value|
-      total_kills += value
+
+    for i in 0..@lines.size - 1
+      if @lines.at(i).include?('killed')
+        total_kills += 1
+      end
     end
     total_kills
   end

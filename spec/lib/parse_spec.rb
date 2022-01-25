@@ -35,8 +35,8 @@ describe Parse do
           "#{file_name}": {
             "lines": 5306,
             "players": ["Isgalamido","Mocinha","Dono da Bola","Zeh","Assasinu Credi","Oootsimo","UnnamedPlayer","Maluquinho","Mal","Chessus"],
-            "kills":{"Isgalamido":178,"Dono da Bola":88,"Zeh":154,"Assasinu Credi":123,"Oootsimo":132,"Maluquinho":1,"Mal":51,"Chessus":41},
-            "total_kills":768
+            "kills":{"Isgalamido":147,"Dono da Bola":63,"Zeh":124,"Assasinu Credi":111,"Oootsimo":114,"Maluquinho":0,"Mal":-4,"Chessus":33},
+            "total_kills":1069
           }
         }.to_json
 
