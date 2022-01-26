@@ -13,11 +13,14 @@ describe Parse do
         expect(Parse.new(path).obtain_first_line).to eq('  0:00 ------------------------------------------------------------')
       end
     end
+  end
 
+  describe '#initialize' do
     context 'when file does not exist:' do
       it 'return an error' do
+        error_message = 'File not found'
 
-        expect(Parse.new(invalid_path).obtain_first_line).to eq(nil)
+        expect{Parse.new(invalid_path)}.to raise_error(error_message)
       end
     end
   end

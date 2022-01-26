@@ -8,13 +8,10 @@ class Parse
     @lines = []
     @file_name = ''
 
-    begin
-      if File.exist?(@path)
-        @lines = File.readlines(@path, chomp: true)
-        @file_name = File.basename(@path)
-      end
-    rescue Errno::ENOENT
-      raise "File not found in: #{@path}"
+    raise 'File not found' unless
+    if File.exist?(@path)
+      @lines = File.readlines(@path, chomp: true)
+      @file_name = File.basename(@path)
     end
   end
 
