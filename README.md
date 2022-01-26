@@ -16,7 +16,7 @@ https://rubygems.org/pages/download
 ```
 $ gem install bundler
 ```
-3. Clone or Download this repository and the Extract it
+3. Clone or Download this repository and then Extract it
 ```
 $ git clone git@github.com:wesjrock/log-parser.git
 ```
