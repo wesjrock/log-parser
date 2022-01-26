@@ -30,17 +30,12 @@ Go to root directory
 ```
 log-parser
 ```
-Run
+
 ```
-$ ruby main.rb
+$ bundle exec ruby main.rb
 ```
 
 # Running Tests
-Go to directory
 ```
-log-parser/spec/lib
-```
-Run
-```
-$ rspec parse_spec.rb
+$ bundle exec rspec
 ```
