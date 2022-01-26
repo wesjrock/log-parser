@@ -7,13 +7,22 @@ The parser must be able to read the file, group the data from each game, and in 
 The games.log file can be obtained here: https://gist.github.com/fabiosammy/ba973184e82e930043df8d4aa002bde4
 
 # Required
-1. Install Ruby (version 3.1.0)
+1. Install Ruby (version 3.1.0) and Ruby Gems
 ```
 https://rvm.io
+https://rubygems.org/pages/download
 ```
-2. Install dependencies: json, rspec, rubocop, simplecov
+2. Install bundler
 ```
-Run the command 'bundle'
+$ gem install bundler
+```
+3. Clone or Download this repository and the Extract it
+```
+$ git clone git@github.com:wesjrock/log-parser.git
+```
+4. Install dependencies: json, rspec, rubocop, simplecov
+```
+$ 'bundle'
 ```
 
 # Running the Aplication
@@ -23,7 +32,7 @@ log-parser
 ```
 Run
 ```
-ruby main.rb
+$ ruby main.rb
 ```
 
 # Running Tests
@@ -33,5 +42,5 @@ log-parser/spec/lib
 ```
 Run
 ```
-rspec parse_spec.rb
+$ rspec parse_spec.rb
 ```
