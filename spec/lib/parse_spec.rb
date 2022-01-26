@@ -3,23 +3,21 @@
 require_relative '../../lib/parse'
 
 describe Parse do
-  let(:path) { '../../data/games.log' }
+  let(:path) { 'data/games.log' }
   let(:invalid_path) { 'invalid.rb' }
 
   describe '#obtain_first_line' do
     context 'when file exists:' do
-      it 'return first line of the file' do
-        parse = Parse.new(path)
+      it 'return its first line' do
 
-        expect(parse.obtain_first_line).to eq('  0:00 ------------------------------------------------------------')
+        expect(Parse.new(path).obtain_first_line).to eq('  0:00 ------------------------------------------------------------')
       end
     end
 
     context 'when file does not exist:' do
       it 'return an error' do
-        parse = Parse.new(invalid_path)
 
-        expect(parse.obtain_first_line).to eq(nil)
+        expect(Parse.new(invalid_path).obtain_first_line).to eq(nil)
       end
     end
   end

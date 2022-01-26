@@ -6,14 +6,15 @@ class Parse
   def initialize(path)
     @path = path
     @lines = []
+    @file_name = ''
 
     begin
       if File.exist?(@path)
         @lines = File.readlines(@path, chomp: true)
-        @file = File.basename(@path)
+        @file_name = File.basename(@path)
       end
     rescue Errno::ENOENT
-      puts 'Invalid Path'
+      raise "File not found in: #{@path}"
     end
   end
 
@@ -23,7 +24,7 @@ class Parse
 
   def output
     game_info = {
-      @file => {
+      @file_name => {
         lines: count_lines,
         players: obtain_player_names,
         kills: count_kills,
