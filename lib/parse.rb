@@ -42,10 +42,9 @@ class Parse
   def obtain_player_names
     game_info_aux = []
 
-    for i in 0..@lines.size - 1
-      if @lines.at(i).include?('killed')
-        splitted = @lines.at(i).split('killed')
-
+    @lines.each do |line|
+      if line.include?('killed')
+        splitted = line.split('killed')
         players_one = splitted[0].split(':')
         players_one.slice!(0, 3)
         players_one[0].strip!
@@ -65,9 +64,9 @@ class Parse
   def count_kills
     players_and_kills = {}
 
-    for i in 0..@lines.size - 1
-      if @lines.at(i).include?('killed')
-        splitted = @lines.at(i).split('killed')
+    @lines.each do |line|
+      if line.include?('killed')
+        splitted = line.split('killed')
 
         players_one = splitted[0].split(':')
         players_one.slice!(0, 3)
@@ -77,11 +76,11 @@ class Parse
       end
     end
 
-    for j in 0..@lines.size - 1
+    @lines.each do |line|
       players_and_kills.each {|key, value|
-        if @lines.at(j).include?("#{key} killed")
+        if line.include?("#{key} killed")
           players_and_kills.store(key, value + 1)
-        elsif @lines.at(j).include?("<world> killed #{key}")
+        elsif line.include?("<world> killed #{key}")
           players_and_kills.store(key, value - 1)
         end
       }
@@ -93,8 +92,8 @@ class Parse
   def count_total_kills
     total_kills = 0
 
-    for i in 0..@lines.size - 1
-      if @lines.at(i).include?('killed')
+    @lines.each do |line|
+      if line.include?('killed')
         total_kills += 1
       end
     end
