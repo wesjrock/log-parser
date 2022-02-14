@@ -14,7 +14,6 @@ class Parse
     else
       raise 'File not found'
     end
-
   end
 
   def obtain_first_line
