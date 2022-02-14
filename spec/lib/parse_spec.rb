@@ -3,7 +3,7 @@
 require_relative '../../lib/parse'
 
 describe Parse do
-  let(:path) { 'data/games.log' }
+  let(:path) { 'spec/fixtures/games.log' }
   let(:invalid_path) { 'invalid.rb' }
 
   describe '#obtain_first_line' do

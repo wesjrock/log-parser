@@ -8,11 +8,13 @@ class Parse
     @lines = []
     @file_name = ''
 
-    raise 'File not found' unless
     if File.exist?(@path)
       @lines = File.readlines(@path, chomp: true)
       @file_name = File.basename(@path)
+    else
+      raise 'File not found'
     end
+
   end
 
   def obtain_first_line
