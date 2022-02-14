@@ -1,26 +1,26 @@
 # frozen_string_literal: true
 
-require_relative '../spec_helper'
 require_relative '../../lib/parse'
 
 describe Parse do
-  let(:path) { '../../data/games.log' }
+  let(:path) { 'spec/fixtures/games.log' }
   let(:invalid_path) { 'invalid.rb' }
 
   describe '#obtain_first_line' do
     context 'when file exists:' do
-      it 'return first line of the file' do
-        parse = Parse.new(path)
+      it 'return its first line' do
 
-        expect(parse.obtain_first_line).to eq('  0:00 ------------------------------------------------------------')
+        expect(Parse.new(path).obtain_first_line).to eq('  0:00 ------------------------------------------------------------')
       end
     end
+  end
 
+  describe '#initialize' do
     context 'when file does not exist:' do
       it 'return an error' do
-        parse = Parse.new(invalid_path)
+        error_message = 'File not found'
 
-        expect(parse.obtain_first_line).to eq(nil)
+        expect{Parse.new(invalid_path)}.to raise_error(error_message)
       end
     end
   end
@@ -34,7 +34,9 @@ describe Parse do
         expected_json_object = {
           "#{file_name}": {
             "lines": 5306,
-            "players": ["Isgalamido","Mocinha","Dono da Bola","Zeh","Assasinu Credi","Oootsimo","UnnamedPlayer","Maluquinho","Mal","Chessus"]
+            "players": ["Isgalamido","Mocinha","Dono da Bola","Zeh","Assasinu Credi","Oootsimo","UnnamedPlayer","Maluquinho","Mal","Chessus"],
+            "kills":{"Isgalamido":147,"Dono da Bola":63,"Zeh":124,"Assasinu Credi":111,"Oootsimo":114,"Maluquinho":0,"Mal":-4,"Chessus":33},
+            "total_kills":1069
           }
         }.to_json
 
